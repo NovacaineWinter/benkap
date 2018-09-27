@@ -1,22 +1,12 @@
 import numpy as np
 
-s = '1,4,3'
-b=16
 
-def convertStringToList(string):
-
-	#split input string into a python list (vector) of elements
-	list_s_s = string.split(',')
-
-	list_s =[]
-
-	for i in range(0,len(list_s_s)):
-		list_s.append(int(list_s_s[i]))
-
-	return list_s
+def convertStringToList(inputString):
+	#split string into a list by the comma, then convert each into an int	
+	return map(int,(inputString.split(',')))
 
 def convertListToString(inputList):
-
+	#dead easy - take list
 	return ','.join(map(str, inputList))
 
 def value(b,s):
@@ -67,8 +57,52 @@ def kap(b,s):
 
 	return convertListToString(output)
 
+def decompose(b,s):
+	l = convertStringToList(s)
+	output =[]
+	for x in range(0,b):
+		num = 0
+		for z in range(0,len(l)):	
+			if l[z] == x:
+				num = num +1
+				
+		output.append(num)
+
+	return output
+
+def recompose(b,inp):
+	nums = range(0,b)
+	output = []
+	for i in nums:
+		for j in range(0,inp[i]):
+			output.append(i)
+
+	return output
+
+#print recompose(b,decompose(b,s))
+
+def addLeadingZeros(numAsStr,k):
+	#this currently doesnt deal with commas - dont know if that is a problem yet
+	length = len(numAsStr)
+	print numAsStr
+	if(length < k):
+		for i in range(0,k-length):
+			numAsStr='0'+numAsStr
 
 
-print kap(b,s)
+def addCommas(str):
+	pass
 
+#function of b and k that outputs all acceptable s
 
+def inputs(b,k):
+#having trouble with this function - considering making something that works like a rolling counter
+
+	numbers = []
+	number = ''
+	for i in range(0,k):
+		pass
+	numbers = map(str,numbers)
+	numbers = [addLeadingZeros(n, k) for n in numbers]
+	return numbers
+	
